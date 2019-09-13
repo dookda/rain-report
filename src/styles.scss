@@ -1,0 +1,49 @@
+/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css?family=Kanit");
+@import url("https://unpkg.com/leaflet@1.5.1/dist/leaflet.css");
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: Kanit !important;
+}
+
+body {
+    font-family: "Tahoma",Helvetica,Arial,sans-serif;
+    font-size: 14px !important;
+    line-height: 1.72222;
+}
+
+.navbar-collapse {
+    padding-right: 21px !important;
+    padding-bottom: 9px !important;
+    padding-top: 9px;
+}
+
+.container-fluid {
+    padding-top: 5px;
+    padding-right: 10px;
+    padding-left: 10px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.top{
+    margin-top: 1rem;
+}
+
+.navbar-brand{
+    font-family: Kanit;
+}
+
+.tile {
+text-align: left !important; 
+}
+
+.footer {
+    background-color: #eff0f2;
+    border-radius: 6px;
+    padding: 14px;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    position: relative;
+    text-align: left; 
+}
