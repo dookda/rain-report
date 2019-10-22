@@ -12,13 +12,18 @@ import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
+import { ReportComponent } from './report/report.component';
+import { ServiceService } from './service.service';
+import { DetailComponent } from './detail/detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
     FooterComponent,
-    HomeComponent
+    HomeComponent,
+    ReportComponent,
+    DetailComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +33,11 @@ import { HomeComponent } from './home/home.component';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule
   ],
-  providers: [AngularFirestore, AngularFireStorage],
+  providers: [
+    AngularFirestore,
+    AngularFireStorage,
+    ServiceService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

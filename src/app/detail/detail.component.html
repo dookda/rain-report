@@ -1,0 +1,19 @@
+<div class="dcard">
+    <div class="todo-content">
+        ปริมาณน้ำฝน: <strong> {{data.rain}}</strong> มม.
+        <br>พิกัด: {{data.lat | number: '1.2'}},{{data.lon | number: '1.2'}}
+        &nbsp; ผู้รายงาน: {{data.reporter}}
+    </div>
+</div>
+<p></p>
+<img [src]="img" alt="">
+<p></p>
+<div class="row">
+
+    <div class="col">
+        <a href="home" class="btn btn-block btn-lg btn-primary">กลับหน้าแรก</a>
+    </div>
+    <div class="col">
+        <a href="report" class="btn btn-block btn-lg btn-info">กลับหน้ารายงาน</a>
+    </div>
+</div>

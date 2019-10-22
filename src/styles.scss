@@ -35,11 +35,43 @@ body {
 }
 
 .tile {
-text-align: left !important; 
+    text-align: left !important; 
+}
+
+.dcard {
+    font-family: Kanit;
+    background-color: #1ABC9C;
+    border-radius: 6px;
+    padding: 14px;
+    margin-top: 1rem;
+    // margin-bottom: 1rem;
+    position: relative;
+    text-align: left; 
+}
+
+.dcard:hover {
+    font-family: Kanit;
+    background-color: rgb(35, 235, 195);
+    border-radius: 6px;
+    padding: 14px;
+    margin-top: 1rem;
+    // margin-bottom: 1rem;
+    position: relative;
+    text-align: left; 
+}
+
+.right{
+    align-content: right;
+}
+
+.right-icon {
+    float: right;
+    font-size: 24px;
+    padding: 11px 22px 0 0;
 }
 
 .footer {
-    background-color: #eff0f2;
+    background-color: #ECF0F1;
     border-radius: 6px;
     padding: 14px;
     margin-top: 2rem;

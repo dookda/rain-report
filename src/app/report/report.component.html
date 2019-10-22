@@ -1,0 +1,17 @@
+<!-- <ul>
+    <li *ngFor="let d of dataArr">
+        {{ d.img }}
+    </li>
+</ul> -->
+
+<div class="dcard" *ngFor="let d of dataArr">
+    <div (click)="gotoDetail(d)">
+        <div class="todo-icon fui-chat"></div>
+        <div class="todo-content">
+            <strong> {{d.rain}}</strong> มม.
+            <br>พิกัด: {{d.lat | number: '1.2'}},{{d.lon | number: '1.2'}}
+            &nbsp; ผู้รายงาน: {{d.reporter}}
+        </div>
+
+    </div>
+</div>

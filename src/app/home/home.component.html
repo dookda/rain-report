@@ -37,6 +37,10 @@
             [disabled]="rainForm.pristine || rainForm.invalid" class="btn btn-success" (click)="onSubmit()">
             Save
         </button>
+        <p></p>
+        <!-- <div *ngIf="item === 'somevalue'"></div> -->
+        <progress max="100" [value]="(uploadProgress | async)"></progress>
+        {{ uploadProgress | async | number: '1.0-0' }}% Complete
 
         <!-- <a class="btn btn-primary btn-lg btn-block" type="submit" [disabled]="angForm.pristine || angForm.invalid">Log
             in</a> -->

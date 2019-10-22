@@ -3,11 +3,10 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage';
-
+import { finalize } from 'rxjs/operators';
 
 import * as L from 'leaflet';
 import { MarkerService } from '../marker.service';
-import { async } from '@angular/core/testing';
 
 @Component({
   selector: 'app-home',
@@ -26,7 +25,7 @@ export class HomeComponent implements OnInit {
   public ref: any;
   public task: any;
   public uploadProgress: any;
-  public imgUrl: any;
+  public downloadURL: any;
 
   constructor(
     public fb: FormBuilder,
@@ -73,6 +72,11 @@ export class HomeComponent implements OnInit {
       subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
     });
 
+    const OpenStreetMap_DE = L.tileLayer('https://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png', {
+      maxZoom: 18,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    });
+
     // overlay map
     const cgiUrl = 'http://www.cgi.uru.ac.th/geoserver/ows?';
 
@@ -101,8 +105,9 @@ export class HomeComponent implements OnInit {
     });
 
     const baseMap = {
+      แผนที่ลายเส้น: OpenStreetMap_DE.addTo(this.map),
       แผนที่ถนน: grod,
-      แผนที่ภูมิประเทศ: gter.addTo(this.map),
+      แผนที่ภูมิประเทศ: gter,
       แผนที่ผสม: ghyb
     };
 
@@ -166,9 +171,7 @@ export class HomeComponent implements OnInit {
         }
 
         marker.bindPopup(`ปริมาณน้ำฝน ${poi.rain} มม.<br> ผู้รายงาน ${poi.reporter}`).openPopup();
-
         marker.addTo(this.map);
-
       });
 
       this.map.setView(this.latlon, 16, { animation: true });
@@ -187,7 +190,9 @@ export class HomeComponent implements OnInit {
       const imgId = `imgs/_${Date.now()}_${this.file.name}`;
       this.ref = this.storage.ref(imgId);
       this.task = this.ref.put(this.file);
-      // this.uploadProgress = this.task.percentageChanges();
+
+      this.uploadProgress = this.task.percentageChanges();
+
       this.rainData.img = imgId;
       this.firestore.collection('rain').add(this.rainForm.value);
     } else {
